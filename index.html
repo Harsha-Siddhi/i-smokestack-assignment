@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Responsive Sidebar Toggle</title>
+</head>
+<body class="bg-gray-100 relative">
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <div id="sidebar" class="bg-gray-700 w-[250px] text-white p-4 flex-shrink-0 transform transition-transform duration-300 fixed top-0 left-0 h-full -translate-x-full lg:translate-x-0 lg:static z-40">
+      <!-- Menu Icon (only on small screens) -->
+      <div class="flex justify-end lg:hidden">
+        <button id="menu-toggle" class="text-2xl bg-gray-600 text-white p-2 rounded mb-2">
+          ✕
+        </button>
+      </div>
+      <h1 class="text-xl text-center font-bold mb-4">Harsha Vardhan Balaga</h1>
+      <hr class="border-gray-500 mb-4"/>
+      <nav class="flex flex-col gap-2">
+        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Dashboard</button>
+        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Results</button>
+        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">ID Card</button>
+        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Remedial Result</button>
+        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Sem Registration</button>
+        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Course Feedback</button>
+        <button class="bg-red-600 px-4 py-2 rounded-lg text-left">Logout</button>
+      </nav>
+    </div>
+
+    <!-- Menu Icon Outside Sidebar (to open it) -->
+    <button id="menu-open" class="lg:hidden fixed top-4 left-4 z-50 text-2xl bg-gray-700 text-white p-2 rounded">
+      ☰ menu
+    </button>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 overflow-auto ml-0 lg:ml-[250px] pt-4 lg:pt-0">
+      <!-- Your main content here -->
+    </div>
+  </div>
+
+  <!-- JavaScript to toggle sidebar -->
+  <script>
+    const openBtn = document.getElementById("menu-open");
+    const closeBtn = document.getElementById("menu-toggle");
+    const sidebar = document.getElementById("sidebar");
+
+    openBtn.addEventListener("click", () => {
+      sidebar.classList.remove("-translate-x-full");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+    });
+  </script>
+</body>
+</html>
