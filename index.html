@@ -2,58 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Responsive Sidebar Toggle</title>
+  <title>Responsive Sidebar Layout</title>
 </head>
-<body class="bg-gray-100 relative">
-
-  <div class="flex h-screen">
-    <!-- Sidebar -->
-    <div id="sidebar" class="bg-gray-700 w-[250px] text-white p-4 flex-shrink-0 transform transition-transform duration-300 fixed top-0 left-0 h-full -translate-x-full lg:translate-x-0 lg:static z-40">
-      <!-- Menu Icon (only on small screens) -->
-      <div class="flex justify-end lg:hidden">
-        <button id="menu-toggle" class="text-2xl bg-gray-600 text-white p-2 rounded mb-2">
-          ✕
-        </button>
-      </div>
-      <h1 class="text-xl text-center font-bold mb-4">Harsha Vardhan Balaga</h1>
-      <hr class="border-gray-500 mb-4"/>
-      <nav class="flex flex-col gap-2">
-        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Dashboard</button>
-        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Results</button>
-        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">ID Card</button>
-        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Remedial Result</button>
-        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Sem Registration</button>
-        <button class="bg-blue-600 px-4 py-2 rounded-lg text-left">Course Feedback</button>
-        <button class="bg-red-600 px-4 py-2 rounded-lg text-left">Logout</button>
-      </nav>
+<body class="bg-gray-200">
+  <!-- Sidebar -->
+  <div id="sidebar" class="fixed top-0 left-0 h-screen w-64 bg-gray-700 text-white p-4 hidden md:block z-20 transition-transform">
+    <!-- Close button for mobile -->
+    <div class="md:hidden flex justify-end mb-2 -mt-2 -mr-2">
+      <button onclick="closeSidebar()" class="text-white text-2xl font-bold hover:bg-gray-600 rounded p-2">×</button>
     </div>
-
-    <!-- Menu Icon Outside Sidebar (to open it) -->
-    <button id="menu-open" class="lg:hidden fixed top-4 left-4 z-50 text-2xl bg-gray-700 text-white p-2 rounded">
-      ☰ menu
-    </button>
-
-    <!-- Main Content -->
-    <div class="flex-1 p-6 overflow-auto ml-0 lg:ml-[250px] pt-4 lg:pt-0">
-      <!-- Your main content here -->
-    </div>
+    
+    <h1 class="text-xl text-center">Harsha Vardhan Balaga</h1>
+    <hr class="my-4 border-gray-500" />
+    <nav class="flex flex-col gap-2">
+      <button class="bg-blue-600 px-4 py-2 rounded-lg">Dashboard</button>
+      <button class="bg-blue-600 px-4 py-2 rounded-lg">Results</button>
+      <button class="bg-blue-600 px-4 py-2 rounded-lg">ID Card</button>
+      <button class="bg-blue-600 px-4 py-2 rounded-lg">Remedial Result</button>
+      <button class="bg-blue-600 px-4 py-2 rounded-lg">Sem Registration</button>
+      <button class="bg-blue-600 px-4 py-2 rounded-lg">Course Feedback</button>
+      <button class="bg-red-600 px-4 py-2 rounded-lg">Logout</button>
+    </nav>
   </div>
 
-  <!-- JavaScript to toggle sidebar -->
+  <!-- Menu icon for small screens -->
+  <div id="menuIcon" class="md:hidden p-4 fixed top-4 left-4 z-30">
+    <button onclick="toggleSidebar()" class="bg-gray-800 text-white p-2 rounded">☰</button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="pt-24 md:pt-4 md:ml-64 p-4">
+    <h2 class="text-2xl font-bold">Welcome to the ERP Portal Redesign</h2>
+    <p class="mt-2">This is a redesigned, responsive layout that improves usability across devices.</p>
+  </div>
+
   <script>
-    const openBtn = document.getElementById("menu-open");
-    const closeBtn = document.getElementById("menu-toggle");
-    const sidebar = document.getElementById("sidebar");
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const menuIcon = document.getElementById("menuIcon");
+      sidebar.classList.toggle("hidden");
+      menuIcon.classList.toggle("hidden");
+    }
 
-    openBtn.addEventListener("click", () => {
-      sidebar.classList.remove("-translate-x-full");
-    });
-
-    closeBtn.addEventListener("click", () => {
-      sidebar.classList.add("-translate-x-full");
-    });
+    function closeSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const menuIcon = document.getElementById("menuIcon");
+      sidebar.classList.add("hidden");
+      menuIcon.classList.remove("hidden");
+    }
   </script>
 </body>
+
 </html>
